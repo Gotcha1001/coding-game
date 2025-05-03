@@ -1020,9 +1020,10 @@ import JavaResort from "./JavaResort";
 import GamingHotel from "./GamingHotel";
 import Apartment from "./Apartment";
 import Mall from "./Mall";
-import DevWork from "./DevWork";
+
 import DatingOffice from "./DatingOffice";
 import SaveLoadMenu from "./SaveLoadMenu";
+import DevWork from "./Devwork";
 
 export default function GameContainer() {
     const { state, dispatch } = useContext(GameContext);
