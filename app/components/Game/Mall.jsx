@@ -13,6 +13,7 @@ import {
     playMallMusic,
     stopMallMusic,
 } from "@/data/audioManager";
+import FeatureMotionWrapper from "../FramerMotion/FeatureMotionWrapperMap";
 
 export default function Mall() {
     const { state, dispatch } = useGame();
@@ -82,38 +83,42 @@ export default function Mall() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {shopItems.map((item) => (
-                    <motion.div
-                        key={item.id}
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.3 }}
-                        className="bg-black bg-opacity-30 p-4 rounded-lg"
-                    >
-                        <img
-                            src={item.image}
-                            alt={item.name}
-                            className="w-full h-56 object-cover rounded-md mb-2"
-                        />
-                        <h3 className="text-lg font-semibold text-white">{item.name}</h3>
-                        <p className="text-gray-300 text-sm">{item.description}</p>
-                        <p className="text-yellow-400 font-medium mt-2">
-                            Price: ${item.price}
-                        </p>
-                        <p className="text-green-400 text-sm">
-                            Happiness: +{item.happiness}
-                        </p>
-                        <button
-                            onClick={withSound(() => handleBuyItem(item))}
-                            disabled={player.cash < item.price || player.energy < 5}
-                            className={`mt-2 w-full py-2 rounded ${player.cash < item.price || player.energy < 5
-                                ? "bg-gray-500 cursor-not-allowed"
-                                : "bg-blue-600 hover:bg-blue-500 text-white"
-                                }`}
+                {shopItems.map((item, index) => (
+                    <FeatureMotionWrapper index={index} key={index}>
+
+                        <motion.div
+                            key={item.id}
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.3 }}
+                            className="bg-black bg-opacity-30 p-4 rounded-lg"
                         >
-                            Buy
-                        </button>
-                    </motion.div>
+                            <img
+                                src={item.image}
+                                alt={item.name}
+                                className="w-full h-56 object-cover rounded-md mb-2"
+                            />
+                            <h3 className="text-lg font-semibold text-white">{item.name}</h3>
+                            <p className="text-gray-300 text-sm">{item.description}</p>
+                            <p className="text-yellow-400 font-medium mt-2">
+                                Price: ${item.price}
+                            </p>
+                            <p className="text-green-400 text-sm">
+                                Happiness: +{item.happiness}
+                            </p>
+                            <button
+                                onClick={withSound(() => handleBuyItem(item))}
+                                disabled={player.cash < item.price || player.energy < 5}
+                                className={`mt-2 w-full py-2 rounded ${player.cash < item.price || player.energy < 5
+                                    ? "bg-gray-500 cursor-not-allowed"
+                                    : "bg-blue-600 hover:bg-blue-500 text-white"
+                                    }`}
+                            >
+                                Buy
+                            </button>
+                        </motion.div>
+                    </FeatureMotionWrapper>
+
                 ))}
             </div>
         </motion.div>

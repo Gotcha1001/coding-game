@@ -1020,10 +1020,9 @@ import JavaResort from "./JavaResort";
 import GamingHotel from "./GamingHotel";
 import Apartment from "./Apartment";
 import Mall from "./Mall";
-
 import DatingOffice from "./DatingOffice";
 import SaveLoadMenu from "./SaveLoadMenu";
-import DevWork from "./Devwork";
+import Devwork from "./Devwork";
 
 export default function GameContainer() {
     const { state, dispatch } = useContext(GameContext);
@@ -1031,7 +1030,51 @@ export default function GameContainer() {
 
     const imageUrls = useMemo(() => [
         "https://cdn.pixabay.com/photo/2021/09/26/20/49/world-6658881_1280.jpg",
+        // Shop item images from shopItems array
+        "https://media.istockphoto.com/id/2166351477/photo/flat-screen-tv-from-angled-view-with-rural-landscape-with-straw-roll-and-sunset-sky-on-screen.jpg?s=612x612&w=0&k=20&c=KJVGIfQgla8mmCpV8MAObM-nrJ9nHNt3n6daTfqyJ38=", // Flat-Screen TV
+        "https://media.istockphoto.com/id/1274049367/photo/classic-furniture.jpg?s=612x612&w=0&k=20&c=Cv_bEO6Liepr5HsAfQ2r8gm_Y2e84a6Qc8F_g7KeQ-c=", // Comfy Sofa
+        "https://img.freepik.com/free-photo/ai-powered-device-concept_23-2151924131.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // Gaming Console
+        "https://media.istockphoto.com/id/1532459823/photo/modern-living-room-interior-at-night-with-bookshelf-sofa-armchairs-potted-plant-and-air.jpg?s=612x612&w=0&k=20&c=nTkpQlBgVRiqL6JCgoHwzT79D03EAuAzUEOnr9SuOfo=", // Bookshelf
+        "https://img.freepik.com/free-photo/still-life-books-versus-technology_23-2150062920.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // High-End Laptop
+        "https://img.freepik.com/free-photo/view-3d-coffee-cup-with-machine_23-2151083728.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // Coffee Machine
+        "https://img.freepik.com/free-photo/headphones-displayed-against-dark-background_157027-4466.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // Noise-Cancelling Headphones
+        "https://img.freepik.com/free-vector/realistic-fitness-trackers_23-2148530529.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // Smartwatch
+        "https://img.freepik.com/premium-photo/cast-iron-black-adjustable-dumbbells-weightlifting-gym-equipment-side-view_92242-6370.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // Dumbbell Set
+        "https://img.freepik.com/free-photo/potted-plant_1308-106251.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // Desk Plant
+        "https://img.freepik.com/free-photo/futuristic-device-vr-glasses_23-2151924231.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // VR Headset
+        "https://img.freepik.com/free-photo/modern-office-chair-isolated-white-background_181624-45253.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // Ergonomic Chair
+        "https://img.freepik.com/free-photo/man-using-digital-tablet_53876-119721.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // Tablet
+        "https://img.freepik.com/premium-photo/hand-throws-dice-board-game_97716-373.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // Strategy Board Game
+        "https://img.freepik.com/free-photo/young-woman-using-home-technology_23-2149216659.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // Air Purifier
+        "https://img.freepik.com/free-photo/side-view-electric-modern-kettle-with-whistle-wooden-table-kitchen_140725-12881.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // Electric Kettle
+        "https://img.freepik.com/free-photo/smart-home-speaker_23-2148623458.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // Smart Speaker
+        "https://img.freepik.com/free-photo/side-view-hand-with-smartphone-smart-light_23-2150671605.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // Inspirational Art Print
+        "https://img.freepik.com/free-photo/still-life-yoga-room_23-2148108602.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // Yoga Mat
+        "https://img.freepik.com/premium-vector/abstract-leaves-shape-leaf-boho-modern-minimalist-clipart_574890-60.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", //art print
+
+        "https://img.freepik.com/premium-photo/sweet-strawberries-ripe-bananas-blender-near-bowls-cutting-board-grey_1188894-7823.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // High-Speed Blender
+        "https://img.freepik.com/free-photo/bright-computer-equipment-illuminated-dark-office-background-generated-by-artificial-intelligence_24877-80953.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // Gaming Mouse
+        "https://img.freepik.com/free-photo/modern-desk-lamp_23-2147923459.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // LED Desk Lamp
+        "https://img.freepik.com/premium-photo/power-bank-charges-smartphone-forest-background-bicycle_115838-1234.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // Portable Charger
+        "https://img.freepik.com/premium-photo/bike-is-parked-dirt-path-woods_1148406-32253.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", //bicyle
+        "https://img.freepik.com/premium-photo/uncooked-frozen-small-pizza-placed-into-microwavejunk-foodfast-food-conceptside-viewselective-focus_334782-9162.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // Compact Microwave
+        "https://img.freepik.com/free-photo/acoustic-guitar-isolated-white_181624-58107.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // Acoustic Guitar
+        "https://img.freepik.com/premium-photo/individual-is-holding-modern-smart-phone-right-front-digital-thermostat-possibly-adjusting-temperature-remotely_561602-2720.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // Smart Thermostat
+        "https://img.freepik.com/premium-photo/puzzles-composition-different-concepts-ideas_185193-139344.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // Jigsaw Puzzle Set
+        "https://img.freepik.com/premium-photo/restaurant-with-glass-door-that-sayswineon-it_1309173-23636.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // External Monitor
+        "https://img.freepik.com/premium-photo/scooter-city-business-woman-going-work-with-electric-vehicle-outdoor-street-mexico-travel-happy-professional-female-corporate-manager-commuting-office-urban-town_590464-101688.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // Electric Scooter
+        "https://img.freepik.com/free-photo/woman-with-knitting-tools_23-2148832350.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // Cozy Blanket
+        "https://img.freepik.com/premium-photo/man-hand-opened-mini-small-refrigerator-reached-drinking-plastic-water-bottle-wood-counter-hotel-resort-bedroom_39476-5687.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // Mini Fridge
+        "https://img.freepik.com/free-photo/arrangement-color-palette-box-empty-notepad_23-2148745579.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // Sketchbook & Pencils
+        "https://img.freepik.com/free-photo/working-from-home-ergonomic-workstation_23-2149132345.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // Standing Desk
+        "https://img.freepik.com/free-photo/aromatherapy-diffuser_23-2148370747.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // Aromatherapy Diffuser
+        "https://img.freepik.com/free-photo/keyboard-with-neon-lights-high-angle_23-2149680226.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // Wireless Keyboard
+        "https://img.freepik.com/free-photo/backpack-with-boots-tools-other-items-table_157027-4160.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // Camping Gear Set
+        "https://img.freepik.com/premium-psd/digital-photo-frame-displaying-beach-scene_1122354-24075.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // Digital Photo Frame
+        "https://img.freepik.com/premium-photo/cordless-vacuum-cleaner-carpet-sofa-space-text_185193-142613.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // Robot Vacuum
+        // Location images
         ...Object.values(locations).map((loc) => loc.image),
+        // Avatar and other game images
         "/avatars/avatar1.jpg",
         "/avatars/avatar2.jpg",
         "/avatars/avatar3.jpg",
@@ -1078,29 +1121,23 @@ export default function GameContainer() {
     ], []);
 
     const videoUrls = useMemo(() => [
-        "https://cdn.pixabay.com/video/2023/08/24/177572-857741629_tiny.mp4",
-
-        "https://cdn.pixabay.com/video/2016/09/21/5364-183788428_t729_tiny.mp4",
-        "/videos/gaming.mp4",
-        "/videos/apartment.mp4",
-        //places
-        "https://cdn.pixabay.com/video/2022/08/27/129247-743827327_tiny.mp4",//rent office
-        "https://cdn.pixabay.com/video/2021/04/24/72025-543403489_tiny.mp4", //fast food
-        "/videos/devwork-bg.mp4", //devwork
-        "/videos/devwork-bg.mp4",
-        //videobackgrounds ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        "  https://cdn.pixabay.com/video/2016/09/21/5364-183788428_tiny.mp4", // javaresot
-        "https://cdn.pixabay.com/video/2020/09/04/49050-459186396_tiny.mp4", //gaming hotel
-        " https://cdn.pixabay.com/video/2023/08/24/177572-857741629_tiny.mp4", //react university
-        "https://cdn.pixabay.com/video/2020/09/04/49050-459186396_tiny.mp4", //typscript hotel
-        "https://cdn.pixabay.com/video/2020/09/04/49050-459186396_tiny.mp4", //csharp hotel
-        "https://cdn.pixabay.com/video/2020/09/04/49050-459186396_tiny.mp4",//expresshotel
-        "https://cdn.pixabay.com/video/2020/09/04/49050-459186396_tiny.mp4", //nextjs school
-        "https://cdn.pixabay.com/video/2020/09/04/49050-459186396_tiny.mp4", //css hotel
-        "https://cdn.pixabay.com/video/2020/09/04/49050-459186396_tiny.mp4", // javascript hotel
-        "https://cdn.pixabay.com/video/2020/09/04/49050-459186396_tiny.mp4", //python hotel
-
-
+        // Background videos for locations
+        "https://cdn.pixabay.com/video/2023/08/24/177572-857741629_tiny.mp4", // ReactNativeUniversity
+        "https://cdn.pixabay.com/video/2016/09/21/5364-183788428_tiny.mp4", // JavaResort, University
+        "https://cdn.pixabay.com/video/2020/09/04/49050-459186396_tiny.mp4", // GamingHotel
+        "https://cdn.pixabay.com/video/2022/08/27/129247-743827327_tiny.mp4", // RentalOffice
+        "https://cdn.pixabay.com/video/2021/04/24/72025-543403489_tiny.mp4", // FastFood
+        "/videos/nextjs-bg.mp4", // NextJs
+        "/videos/csshotel-bg.mp4", // CssHotel
+        "/videos/pythonhotel-bg.mp4", // PythonHotel
+        "/videos/javascript-bg.mp4", // JavaScriptHotel
+        "/videos/typescript-bg.mp4", // TypeScriptHolidayResort
+        "/videos/express-bg.mp4", // ExpressHotel
+        "/videos/csharp-bg.mp4", // CSharpHotel
+        "/videos/gaming-bg.mp4", // GamingHotel (alternative)
+        "/videos/apartment-bg.mp4", // Apartment
+        "/videos/mall-bg.mp4", // Mall
+        "/videos/devwork-bg.mp4", // Devwork
         // Professor videos from ProfessorHeader
         "https://videos.pexels.com/video-files/3252126/3252126-sd_640_360_25fps.mp4", // React
         "https://videos.pexels.com/video-files/7968376/7968376-sd_960_506_25fps.mp4", // React Native
@@ -1205,7 +1242,7 @@ export default function GameContainer() {
                     {currentScreen === "gamingHotel" && <GamingHotel />}
                     {currentScreen === "apartment" && <Apartment />}
                     {currentScreen === "mall" && <Mall />}
-                    {currentScreen === "devWork" && <DevWork />}
+                    {currentScreen === "devWork" && <Devwork />}
                     {currentScreen === "datingOffice" && <DatingOffice />}
                     {currentScreen === "saveload" && <SaveLoadMenu />}
                 </div>
