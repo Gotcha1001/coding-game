@@ -246,8 +246,8 @@ export default function PlayerSelect() {
                                 src={avatar}
                                 alt={`Avatar ${index + 1}`}
                                 className={`w-16 h-16 rounded-full cursor-pointer border-4 transition-all duration-300 ${selectedAvatar === index
-                                        ? "border-indigo-400 shadow-lg shadow-indigo-500/50"
-                                        : "border-transparent hover:border-purple-500/50"
+                                    ? "border-indigo-400 shadow-lg shadow-indigo-500/50"
+                                    : "border-transparent hover:border-purple-500/50"
                                     }`}
                                 onClick={() => setSelectedAvatar(index)}
                                 initial={{ opacity: 0, scale: 0.8 }}
