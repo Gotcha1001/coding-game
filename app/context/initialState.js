@@ -3,6 +3,7 @@ import { locations } from "@/data/locations";
 export const defaultPlayer = {
   name: "",
   avatar: "",
+  difficulty: "medium",
   points: 0,
   cash: 12000,
   happiness: 50,

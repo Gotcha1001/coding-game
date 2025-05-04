@@ -114,10 +114,9 @@ export default function RentalOffice() {
     };
 
     const upgradeApartment = (tier) => {
-        let rentAmount, upgradeFee;
+        let rentAmount, upgradeFee, apartmentTier;
         const currentTier = getApartmentTier();
         if (
-            (currentTier === 'standard' && tier === 'basic') ||
             (currentTier === 'luxury' && (tier === 'basic' || tier === 'standard'))
         ) {
             showMessage("You can't downgrade your apartment. Consider renting a new one instead.");
@@ -128,14 +127,17 @@ export default function RentalOffice() {
             case 'standard':
                 rentAmount = 100;
                 upgradeFee = 150;
+                apartmentTier = "Standard";
                 break;
             case 'luxury':
                 rentAmount = 200;
                 upgradeFee = currentTier === 'basic' ? 350 : 250;
+                apartmentTier = "Luxury";
                 break;
             default:
                 rentAmount = 50;
                 upgradeFee = 0;
+                apartmentTier = "Basic";
         }
         if (player.cash < upgradeFee) {
             showMessage(`You need $${upgradeFee} for the upgrade fee.`);
@@ -143,25 +145,18 @@ export default function RentalOffice() {
         }
         dispatch({
             type: 'UPGRADE_APARTMENT',
-            payload: { rentAmount, upgradeFee },
+            payload: { rentAmount, upgradeFee, apartmentTier },
         });
         dispatch({ type: 'USE_TIME', payload: { amount: 15 } });
         setShowUpgradeModal(false);
-        showMessage(`You've successfully upgraded to a ${tier} apartment!`);
+        showMessage(`You've successfully upgraded to a ${apartmentTier} apartment!`);
     };
 
     const getApartmentTier = () => {
         if (!player?.rental?.hasApartment) return "none";
-        switch (player.rental.rentAmount) {
-            case 50:
-                return "basic";
-            case 100:
-                return "standard";
-            case 200:
-                return "luxury";
-            default:
-                return "basic";
-        }
+        console.log("Current apartment tier from state:", player.rental.apartmentTier);
+        console.log("Current rent amount:", player.rental.rentAmount);
+        return player.rental.apartmentTier || "Basic";
     };
 
     const goBackToMap = () => {
@@ -354,7 +349,7 @@ export default function RentalOffice() {
                             You can upgrade to a better place for additional amenities and happiness bonuses.
                         </p>
                         <div className="grid gap-4">
-                            {getApartmentTier() === "basic" && (
+                            {getApartmentTier().toLowerCase() === "basic" && (
                                 <>
                                     <button
                                         onClick={withSound(() => upgradeApartment('standard'))}
@@ -380,7 +375,7 @@ export default function RentalOffice() {
                                     </button>
                                 </>
                             )}
-                            {getApartmentTier() === "standard" && (
+                            {getApartmentTier().toLowerCase() === "standard" && (
                                 <button
                                     onClick={withSound(() => upgradeApartment('luxury'))}
                                     className="bg-amber-600 hover:bg-amber-700 text-white p-3 rounded-lg flex justify-between items-center"

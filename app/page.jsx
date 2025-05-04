@@ -94,11 +94,11 @@ export default function Home() {
 
 
         <div className="flex flex-col sm:flex-row justify-center gap-4">
-          {/* <Link href="/dashboard" className="w-full sm:w-auto">
+          <Link href="/dashboard" className="w-full sm:w-auto">
             <Button variant="sex1" size="lg" className="w-full sm:w-auto mr-2">
               Dashboard <ChevronRight size={18} className="ml-1" />
             </Button>
-          </Link> */}
+          </Link>
           {/* <Link href="#features" className="w-full sm:w-auto">
             <Button variant="sex" size="lg" className="w-full sm:w-auto">
               Learn More <ChevronRight size={18} className="ml-1" />

@@ -1030,6 +1030,44 @@ export default function GameContainer() {
 
     const imageUrls = useMemo(() => [
         "https://cdn.pixabay.com/photo/2021/09/26/20/49/world-6658881_1280.jpg",
+        // location images
+        "https://images.unsplash.com/photo-1534655610770-dd69616f05ff?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDZ8fGFwYXJ0bWVudHxlbnwwfHwwfHx8MA%3D%3D", // apartment
+        "https://img.freepik.com/free-photo/mall-america-scenes-cinematic-style_23-2151551299.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // mall
+        "https://img.freepik.com/free-photo/luxury-hotel-lobby_1127-3173.jpg?uid=R194451028&ga=GA1.1.14800995831741975489&semt=ais_hybrid&w=740", // cssHotel
+        "https://img.freepik.com/free-photo/view-pretty-woman-black-short-dress-sitting-table-terrace-cafeteria-she-is-looking-camera_197531-1094.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // rentOffice
+        "https://media.istockphoto.com/id/907614450/photo/luxury-resort-hotel-with-swimming-pool-at-sunset.jpg?s=612x612&w=0&k=20&c=eUijzw-MkPw00HAw464I3mwa4b17yhrfvh5HiGZiEqo=", // nextJsSchool
+        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&auto=format&fit=crop&q=60", // devWork
+        "https://img.freepik.com/premium-photo/homemade-burger-with-beef-cheese-onion-marmalade-wooden-board-fast-food-concept-american-food_90258-3917.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // fastFood
+        "https://images.unsplash.com/photo-1568792923760-d70635a89fdc?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHVuaXZlcnNpdHl8ZW58MHx8MHx8fDA%3D", // university
+        "https://images.pexels.com/photos/2837909/pexels-photo-2837909.jpeg?auto=compress&cs=tinysrgb&w=600", // javaScriptHotel
+        "https://img.freepik.com/free-photo/modern-hotel-lobby-with-reception-desk_1127-3174.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // pythonHotel
+        "https://images.pexels.com/photos/13045627/pexels-photo-13045627.jpeg?auto=compress&cs=tinysrgb&w=800", // typeScriptHolidayResort
+        "https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=600", // expressHotel
+        "https://img.freepik.com/free-photo/luxury-hotel-lobby_1127-3173.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // cSharpHotel
+        "https://media.istockphoto.com/id/2149035292/photo/state-college-penn-state-university-pennsylvania-students-walk-the-paths-to-class.jpg?s=612x612&w=0&k=20&c=Y-FNVfkffLr9D-tXE7BkcmeffMOdzDiNIrJq88Meav0=", // reactNativeUniversity
+        "https://media.istockphoto.com/id/119926339/photo/resort-swimming-pool.jpg?s=612x612&w=0&k=20&c=9QtwJC2boq3GFHaeDsKytF4-CavYKQuy1jBD2IRfYKc=", // javaResort
+        "https://media.istockphoto.com/id/880722946/photo/beach-holidays-luxury-swimming-pool-with-palm-trees.jpg?s=612x612&w=0&k=20&c=HH7LweDyoBsCzM-El-xkO5AQYcrHxMLVRFFIWQDPwWQ=", // gamingHotel
+        // dating images
+        "https://img.freepik.com/free-photo/full-shot-woman-bdsm-aesthetics_23-2151117243.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740",
+        "https://img.freepik.com/free-photo/high-fashion-look-glamor-stylish-beautiful-young-brunette-woman-model-summer-bright-hipster-cloth-sunglasses_158538-14149.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740",
+        "https://img.freepik.com/premium-photo/feeling-free-express-her-sensuality-beautiful-young-woman-sports-uniform-touching-her-cap_425904-8025.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740",
+        "https://img.freepik.com/free-photo/lifestyle-fashion-portrait-young-woman-with-perfect-fit-body-wearing-stylish-bright-summer-clothes-have-long-hairs-bright-makeup-having-fun-alone_291049-548.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740",
+        "https://img.freepik.com/premium-photo/young-beautiful-sexy-woman-with-beautiful-slim-legs-black-denim-jacket-with-stylish-jeans-shorts-with-black-cap-leather-shoes-posing-city-urban-women-s-style-look_338491-10565.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740",
+        "https://img.freepik.com/free-photo/young-beautiful-woman-wearing-red-lingerie-bed-morning_158538-10345.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740",
+        "https://img.freepik.com/free-photo/blonde-girl-posing-white-with-closed-eyes_158538-8401.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740",
+        "https://img.freepik.com/premium-photo/young-lady-sitting-recliner-posing-stylish-outfit-warm-sunny-mood_273443-4826.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740",
+        "https://img.freepik.com/free-photo/fashion-portrait-smiling-brunette-blond-models-summer-casual-clothes-colorful-pink-wall_158538-14863.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740",
+        "https://img.freepik.com/free-photo/indoor-bright-fashion-summer-portrait-stylish-happy-hipster-woman-smoking-having-fun-have-long-brunette-hairs-perfect-tanned-fit-slim-body-wearing-crop-top-round-sunglasses_291049-481.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740",
+        "https://img.freepik.com/premium-photo/portrait-body-wake-up-with-sexy-man-lying-shirtless-bedroom-his-home-morning-relax-arm-muscle-with-handsome-young-male-model-resting-topless-bed-sensuality_590464-173033.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740",
+        "https://img.freepik.com/premium-photo/shirtless-sexy-man-have-rest-alone-his-bedroom-morning-time_146671-28571.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740",
+        "https://img.freepik.com/free-photo/young-handsome-muscled-fit-male-model-man-posing-studio-showing-his-abdominal-muscles-leather-jacket_158538-2234.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740",
+        "https://img.freepik.com/premium-photo/man-face-relax-shirtless-bed-bedroom-his-home-confident-serious-topless-male-model-laying-with-hot-guy-look-morning-skincare-body-wellness-after-wake-up_590464-180105.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740",
+        "https://img.freepik.com/free-photo/young-man-with-six-packs-posing-pink-wall_23-2148289260.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740",
+        "https://img.freepik.com/free-photo/young-sportive-african-man-posing-black-wall_176420-2515.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740",
+        "https://img.freepik.com/free-photo/man-bed-working-laptop-checking-mail-watching-movie-listening-music_1321-1007.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740",
+        "https://img.freepik.com/free-photo/portrait-handsome-sunbathed-fashion-man-model-posing-summer-beach-with-white-sand-blue-sky_158538-1791.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740",
+        "https://img.freepik.com/premium-photo/young-healthy-good-looking-macho-man-model-athlete-hotel-indoor-pool_530697-44102.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740",
+        "https://img.freepik.com/premium-photo/handsome-man-standing-looking-camera-wearing-jean-vest-naked-torso_505281-105.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740",
         // Shop item images from shopItems array
         "https://media.istockphoto.com/id/2166351477/photo/flat-screen-tv-from-angled-view-with-rural-landscape-with-straw-roll-and-sunset-sky-on-screen.jpg?s=612x612&w=0&k=20&c=KJVGIfQgla8mmCpV8MAObM-nrJ9nHNt3n6daTfqyJ38=", // Flat-Screen TV
         "https://media.istockphoto.com/id/1274049367/photo/classic-furniture.jpg?s=612x612&w=0&k=20&c=Cv_bEO6Liepr5HsAfQ2r8gm_Y2e84a6Qc8F_g7KeQ-c=", // Comfy Sofa
@@ -1110,39 +1148,48 @@ export default function GameContainer() {
         '/avatars/sexyguy.jpg',
         '/avatars/sexyguy3.jpg',
         '/avatars/sexyguy4.jpg',
-        "/images/professor.jpg",
-        "/images/boss.jpg",
-        "/images/rental-agent.jpg",
-        "/images/fastfood-counter.jpg",
-        "/images/css-hotel-lobby.jpg",
-        "/images/python-hotel-room.jpg",
-        "/images/javascript-hotel-pool.jpg",
-        "/images/typescript-resort-beach.jpg",
-        "/images/express-hotel-bar.jpg",
-        "/images/csharp-hotel-gym.jpg",
-        "/images/reactnative-classroom.jpg",
-        "/images/java-resort-garden.jpg",
-        "/images/gaming-hotel-arcade.jpg",
-        "/images/apartment-livingroom.jpg",
-        "/images/mall-storefront.jpg",
-        "/images/devwork-office.jpg",
-        "/images/dating-office-lounge.jpg",
-        "/images/nextjs-classroom.jpg",
+        "/professor.jpg",
+        "/boss.jpg",
+        "/gaming.jpg",
+        "/bg.jpg",
+        "/datingoffice.jpg",
+        "/grass.jpg",
+        "/header.jpg",
+        "/home.jpg",
+        "/home2.jpg",
+        "/home3.jpg",
+        "/home4.jpg",
+        "/logo2.jpg",
+        "/logo2.jpg",
+        "/meditate.jpg",
+        "/meditate.jpg",
+        "/stone.png",
+
+
     ], []);
 
     const audioUrls = useMemo(() => [
         "/sounds/click.mp3",
-        "/sounds/leisuresound.mp3",
+        "/sounds/apartment.mp3",
+        "/sounds/css.mp3",
+        "/sounds/datingmusic.mp3",
+        "/sounds/fastfood.mp3",
+        "/sounds/gaming.mp3",
         "/sounds/healing.mp3",
-        "/sounds/walk.mp3",
+        "/sounds/healing2.mp3",
+        "/sounds/java.mp3",
+        "/sounds/javascript.mp3",
+        "/sounds/leisuresound.mp3",
+        "/sounds/mallmusic.mp3",
+        "/sounds/nextjs.mp3",
+        "/sounds/pythonmusic.mp3",
+        "/sounds/reactn.mp3",
         "/sounds/type.mp3",
-        "/sounds/university-lecture.mp3",
-        "/sounds/fastfood-order.mp3",
-        "/sounds/hotel-checkin.mp3",
-        "/sounds/mall-ambience.mp3",
-        "/sounds/gaming-arcade.mp3",
-        "/sounds/dating-chat.mp3",
-        "/sounds/rental-sign.mp3",
+        "/sounds/universitymusic.mp3",
+        "/sounds/walk.mp3",
+        "/sounds/workmusic.mp3",
+
+
     ], []);
 
     const videoUrls = useMemo(() => [
@@ -1152,17 +1199,12 @@ export default function GameContainer() {
         "https://cdn.pixabay.com/video/2020/09/04/49050-459186396_tiny.mp4", // GamingHotel
         "https://cdn.pixabay.com/video/2022/08/27/129247-743827327_tiny.mp4", // RentalOffice
         "https://cdn.pixabay.com/video/2021/04/24/72025-543403489_tiny.mp4", // FastFood
-        "/videos/nextjs-bg.mp4", // NextJs
-        "/videos/csshotel-bg.mp4", // CssHotel
-        "/videos/pythonhotel-bg.mp4", // PythonHotel
-        "/videos/javascript-bg.mp4", // JavaScriptHotel
-        "/videos/typescript-bg.mp4", // TypeScriptHolidayResort
-        "/videos/express-bg.mp4", // ExpressHotel
-        "/videos/csharp-bg.mp4", // CSharpHotel
-        "/videos/gaming-bg.mp4", // GamingHotel (alternative)
-        "/videos/apartment-bg.mp4", // Apartment
-        "/videos/mall-bg.mp4", // Mall
-        "/videos/devwork-bg.mp4", // Devwork
+        "/videos/workplacevideo.mp4", // Mall
+        "/videos/universityvideo.mp4", // CSharpHotel
+        "/videos/gaming.mp4", // GamingHotel (alternative)
+        "/videos/apartment.mp4", // Apartment
+
+
         // Professor videos from ProfessorHeader
         "https://videos.pexels.com/video-files/3252126/3252126-sd_640_360_25fps.mp4", // React
         "https://videos.pexels.com/video-files/7968376/7968376-sd_960_506_25fps.mp4", // React Native
