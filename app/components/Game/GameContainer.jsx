@@ -2214,7 +2214,6 @@
 
 
 
-
 "use client";
 
 import { useContext, useEffect, useMemo, useState } from "react";
@@ -2306,7 +2305,7 @@ export default function GameContainer() {
         "https://img.freepik.com/premium-photo/handsome-man-standing-looking-camera-wearing-jean-vest-naked-torso_505281-105.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740",
         // Shop item images from shopItems array
         "https://media.istockphoto.com/id/2166351477/photo/flat-screen-tv-from-angled-view-with-rural-landscape-with-straw-roll-and-sunset-sky-on-screen.jpg?s=612x612&w=0&k=20&c=KJVGIfQgla8mmCpV8MAObM-nrJ9nHNt3n6daTfqyJ38=", // Flat-Screen TV
-        "https://media.istockphoto.com/id/1274049367/photo/classic-furniture.jpg?s=612x612&w=0&k=20&c=Cv_bEO6Liepr5HsAfQ2r8gm_Y2e84a6Qc8F_g7KeQ-c=", // Comfy Sofa
+        "https://media.istockphoto.com/id/1274049367/grapher.jpg?s=612x612&w=0&k=20&c=Cv_bEO6Liepr5HsAfQ2r8gm_Y2e84a6Qc8F_g7KeQ-c=", // Comfy Sofa
         "https://img.freepik.com/free-photo/ai-powered-device-concept_23-2151924131.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // Gaming Console
         "https://media.istockphoto.com/id/1532459823/photo/modern-living-room-interior-at-night-with-bookshelf-sofa-armchairs-potted-plant-and-air.jpg?s=612x612&w=0&k=20&c=nTkpQlBgVRiqL6JCgoHwzT79D03EAuAzUEOnr9SuOfo=", // Bookshelf
         "https://img.freepik.com/free-photo/still-life-books-versus-technology_23-2150062920.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // High-End Laptop
@@ -2339,7 +2338,7 @@ export default function GameContainer() {
         "https://img.freepik.com/free-photo/woman-with-knitting-tools_23-2148832350.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // Cozy Blanket
         "https://img.freepik.com/premium-photo/man-hand-opened-mini-small-refrigerator-reached-drinking-plastic-water-bottle-wood-counter-hotel-resort-bedroom_39476-5687.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // Mini Fridge
         "https://img.freepik.com/free-photo/arrangement-color-palette-box-empty-notepad_23-2148745579.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // Sketchbook & Pencils
-        "https://img.freepik.com/free-photo/working-from-home-ergonomic-workstation_23-2149132345.jpg?uid=R194451028&ga=GA1.1.1480099583.174 posicionar1975489&semt=ais_hybrid&w=740", // Standing Desk
+        "https://img.freepik.com/free-photo/working-from-home-ergonomic-workstation_23-2149132345.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // Standing Desk
         "https://img.freepik.com/free-photo/aromatherapy-diffuser_23-2148370747.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // Aromatherapy Diffuser
         "https://img.freepik.com/free-photo/keyboard-with-neon-lights-high-angle_23-2149680226.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // Wireless Keyboard
         "https://img.freepik.com/free-photo/backpack-with-boots-tools-other-items-table_157027-4160.jpg?uid=R194451028&ga=GA1.1.1480099583.1741975489&semt=ais_hybrid&w=740", // Camping Gear Set
@@ -2397,29 +2396,6 @@ export default function GameContainer() {
         "/logo2.jpg",
         "/meditate.jpg",
         "/stone.png",
-    ], []);
-
-    const audioUrls = useMemo(() => [
-        "/sounds/click.mp3",
-        "/sounds/apartment.mp3",
-        "/sounds/bankmusic.mp3",
-        "/sounds/css.mp3",
-        "/sounds/datingmusic.mp3",
-        "/sounds/fastfood.mp3",
-        "/sounds/gaming.mp3",
-        "/sounds/healing.mp3",
-        "/sounds/healing2.mp3",
-        "/sounds/java.mp3",
-        "/sounds/javascript.mp3",
-        "/sounds/leisuresound.mp3",
-        "/sounds/mallmusic.mp3",
-        "/sounds/nextjs.mp3",
-        "/sounds/pythonmusic.mp3",
-        "/sounds/reactn.mp3",
-        "/sounds/type.mp3",
-        "/sounds/universitymusic.mp3",
-        "/sounds/walk.mp3",
-        "/sounds/workmusic.mp3",
     ], []);
 
     const videoUrls = useMemo(() => [
@@ -2579,16 +2555,6 @@ export default function GameContainer() {
                 });
             });
 
-            // Preload audio
-            const audioPromises = audioUrls.map((url) => {
-                return new Promise((resolve, reject) => {
-                    const audio = new Audio(url);
-                    audio.preload = "auto";
-                    audio.onloadeddata = () => resolve({ status: 'fulfilled', value: url });
-                    audio.onerror = () => resolve({ status: 'rejected', reason: new Error(`Failed to load audio: ${url}`) });
-                });
-            });
-
             // Preload videos
             const videoPromises = videoUrls.map((url) => {
                 return new Promise((resolve, reject) => {
@@ -2601,7 +2567,7 @@ export default function GameContainer() {
                 });
             });
 
-            const results = await Promise.allSettled([...imagePromises, ...audioPromises, ...videoPromises]);
+            const results = await Promise.allSettled([...imagePromises, ...videoPromises]);
 
             // Log failed assets
             const failedAssets = results.filter(result => result.status === 'rejected');
@@ -2615,7 +2581,7 @@ export default function GameContainer() {
         };
 
         preloadAssets();
-    }, [imageUrls, audioUrls, videoUrls]);
+    }, [imageUrls, videoUrls]);
 
     // Check win condition
     useEffect(() => {
