@@ -1,10 +1,13 @@
 "use client"
 import { UserContext } from '@/app/_context/UserContext'
 import FeatureMotionWrapper from '@/app/components/FramerMotion/FeatureMotionWrapperMap'
+import { Button } from '@/components/ui/button'
 import { api } from '@/convex/_generated/api'
 import { CoachingOptions } from '@/services/Options'
 import { useConvex } from 'convex/react'
 import moment from 'moment'
+import Image from 'next/image'
+import Link from 'next/link'
 import React, { useContext, useEffect, useState } from 'react'
 
 function History() {
@@ -22,11 +25,14 @@ function History() {
             uid: userData?._id
         })
         console.log("ALL DISCUSSIONS:", result)
+        setDiscussionRoomList(result)
     }
+
+
 
     const GetAbstractImages = (option) => {
         const coachingOption = CoachingOptions.find((item) => item.name == option)
-        return coachingOption.abstract
+        return coachingOption?.abstract ?? '/ab1.png'
     }
 
     return (
@@ -37,7 +43,7 @@ function History() {
 
 
             <div className='mt-5'>
-                {discussionRoomList.map((item, index) => (item.coachingOption == 'Topic Base Lecture' || item.coachingOption == 'Learn Language') && (
+                {discussionRoomList.map((item, index) => (item.coachingOption == 'Topic Base Lecture' || item.coachingOption == 'Learn Language' || item.coachingOption == 'Meditation') && (
                     <FeatureMotionWrapper index={index} key={index}>
 
                         <div className='border-b-[1px] pb-3 mb-4 group flex justify-between items-center cursor-pointer'>
@@ -47,10 +53,13 @@ function History() {
                                 <div>
                                     <h2 className='font-bold'>{item.topic}</h2>
                                     <h2 className='text-gray-400'>{item.coachingOption}</h2>
-                                    <h2 className='text-gray-400'>{moment(item._creationTime).fromNow()}</h2>
+                                    <h2 className='text-gray-400 text-sm'>{moment(item._creationTime).fromNow()}</h2>
                                 </div>
                             </div>
-                            <Button variant="sex2" className="invisible group-hover:visible">View Notes</Button>
+                            <Link href={'/view-summery/' + item._id}>
+                                <Button variant="sex2" className="invisible group-hover:visible">View Notes</Button>
+                            </Link>
+
                         </div>
                     </FeatureMotionWrapper>
 

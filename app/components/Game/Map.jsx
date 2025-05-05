@@ -29,32 +29,32 @@ export default function Map() {
     const mapRef = useRef(null);
 
     // Initialize audio
-    useEffect(() => {
-        initAudio();
-        loadWalkingSound("/sounds/walk.mp3");
-    }, []);
+    // useEffect(() => {
+    //     initAudio();
+    //     loadWalkingSound("/sounds/walk.mp3");
+    // }, []);
 
-    // Play/stop walking sound
-    useEffect(() => {
-        if (isWalking) {
-            playWalkingSound();
-        } else {
-            stopWalkingSound();
-        }
-    }, [isWalking]);
+    // // Play/stop walking sound
+    // useEffect(() => {
+    //     if (isWalking) {
+    //         playWalkingSound();
+    //     } else {
+    //         stopWalkingSound();
+    //     }
+    // }, [isWalking]);
 
-    // Stop sound on unmount or screen change to location
-    useEffect(() => {
-        return () => {
-            stopWalkingSound();
-        };
-    }, []);
+    // // Stop sound on unmount or screen change to location
+    // useEffect(() => {
+    //     return () => {
+    //         stopWalkingSound();
+    //     };
+    // }, []);
 
-    useEffect(() => {
-        if (currentScreen === "location") {
-            stopWalkingSound();
-        }
-    }, [currentScreen]);
+    // useEffect(() => {
+    //     if (currentScreen === "location") {
+    //         stopWalkingSound();
+    //     }
+    // }, [currentScreen]);
 
     // Handle window resize
     useEffect(() => {

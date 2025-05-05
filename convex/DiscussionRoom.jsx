@@ -70,7 +70,9 @@ export const GetAllDiscussionRoom = query({
     },
     handler: async (ctx, args) => {
         const result = await ctx.db.query('DiscussionRoom')
-            .filter(q => q.eq(q.field('uid'), args.uid)).collect()
+            .filter(q => q.eq(q.field('uid'), args.uid))
+            .order('desc')
+            .collect()
         return result
     }
 })

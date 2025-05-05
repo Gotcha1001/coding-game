@@ -7,6 +7,7 @@ import { useUser } from '@stackframe/stack'
 import Image from 'next/image'
 import React from 'react'
 import UserInputDialog from './UserInputDialog'
+import ProfileDialog from './ProfileDialog'
 
 function FeatureAssistants() {
     const user = useUser()
@@ -18,7 +19,10 @@ function FeatureAssistants() {
                     <h2 className='font-medium text-gray-200'>My WorkSpace</h2>
                     <h2 className='text-3xl font-bold'>Welcome Back {user?.displayName} </h2>
                 </div>
-                <Button variant='sex2'>Profile</Button>
+                <ProfileDialog>
+                    <Button variant='sex2'>Profile</Button>
+                </ProfileDialog>
+
             </div>
             <div className='grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-10 mt-10 '>
                 {CoachingOptions.map((option, index) => (

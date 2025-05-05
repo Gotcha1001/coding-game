@@ -55,7 +55,7 @@ function ChatBox({ conversation, enableFeedbackNotes, coachingOption }) {
                 {/* </div> */}
             </div>
             {!enableFeedbackNotes ? <h2 className='text-center mt-5 text-sm'>
-                At The End Of Your Conversation We Will Automatically Generate Feedback/Notes From Your Conversation
+
             </h2>
                 : <Button className="mt-7 w-full" variant="sex1" onClick={GenerateFeedbackNotes} disabled={loading}>
                     {loading && <Loader2Icon className='animate-spin' />}
