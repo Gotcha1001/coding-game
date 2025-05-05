@@ -7,7 +7,8 @@ import Image from 'next/image'
 import { useParams } from 'next/navigation'
 import React from 'react'
 import ChatBox from '../../discussion-room/[roomid]/_components/ChatBox'
-import SummeryBox from './_components/SummeryBox'
+import SummeryBox from '../_components/SummeryBox'
+
 
 function ViewSummery() {
     const { roomid } = useParams()
