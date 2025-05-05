@@ -485,18 +485,11 @@ export default function TypeScriptHolidayResort() {
 
     // Add music playback
     useEffect(() => {
-        initAudio();
         loadClickSound("/sounds/click.mp3").then((success) => {
             if (!success) {
                 console.warn("Failed to load click sound");
             }
         });
-        loadTypeScriptHolidayResortMusic("/sounds/type.mp3").then(() => {
-            playTypeScriptHolidayResortMusic();
-        });
-        return () => {
-            stopTypeScriptHolidayResortMusic();
-        };
     }, []);
 
     const handleTopicSelect = (topicName) => {

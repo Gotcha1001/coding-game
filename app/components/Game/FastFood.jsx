@@ -43,18 +43,11 @@ export default function FastFood() {
 
     // Handle fast food music
     useEffect(() => {
-        initAudio();
-        loadClickSound('/sounds/click.mp3').then((success) => {
+        loadClickSound("/sounds/click.mp3").then((success) => {
             if (!success) {
-                console.warn("Can't load click sound");
+                console.warn("Failed to load click sound");
             }
         });
-        loadFastFoodMusic('/sounds/fastfood.mp3').then(() => {
-            playFastFoodMusic();
-        });
-        return () => {
-            stopFastFoodMusic();
-        };
     }, []);
 
     // Helper function to show message and toast

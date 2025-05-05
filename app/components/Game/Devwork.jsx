@@ -1813,19 +1813,13 @@ export default function DevWork() {
         }
     };
 
+    // Add music playback
     useEffect(() => {
-        initAudio();
         loadClickSound("/sounds/click.mp3").then((success) => {
             if (!success) {
                 console.warn("Failed to load click sound");
             }
         });
-        loadWorkMusic("/sounds/workmusic.mp3").then(() => {
-            playWorkMusic();
-        });
-        return () => {
-            stopWorkMusic();
-        };
     }, []);
 
     // Count total mastered subjects across all destinations
@@ -2078,8 +2072,8 @@ export default function DevWork() {
                                             onClick={withSound(() => handleWork(job))}
                                             disabled={!isAvailable || player.energy < 20}
                                             className={`mt-2 w-full py-2 rounded ${!isAvailable || player.energy < 20
-                                                    ? "bg-gray-500 cursor-not-allowed"
-                                                    : "bg-blue-600 hover:bg-blue-500 text-white"
+                                                ? "bg-gray-500 cursor-not-allowed"
+                                                : "bg-blue-600 hover:bg-blue-500 text-white"
                                                 }`}
                                         >
                                             Work (20 Energy, 15 min)

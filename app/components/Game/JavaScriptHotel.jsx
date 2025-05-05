@@ -475,18 +475,11 @@ export default function JavaScriptHotel() {
 
     // Initialize and play music on component mount, stop on unmount
     useEffect(() => {
-        initAudio();
         loadClickSound("/sounds/click.mp3").then((success) => {
             if (!success) {
                 console.warn("Failed to load click sound");
             }
         });
-        loadJavaScriptHotelMusic("/sounds/javascript.mp3").then(() => {
-            playJavaScriptHotelMusic();
-        });
-        return () => {
-            stopJavaScriptHotelMusic();
-        };
     }, []);
 
     const handleTopicSelect = (topicName) => {

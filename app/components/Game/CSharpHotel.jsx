@@ -486,18 +486,11 @@ export default function CSharpHotel() {
 
     // Add music playback
     useEffect(() => {
-        initAudio();
         loadClickSound("/sounds/click.mp3").then((success) => {
             if (!success) {
                 console.warn("Failed to load click sound");
             }
         });
-        loadCSharpHotelMusic("/sounds/healing2.mp3").then(() => {
-            playCSharpHotelMusic();
-        });
-        return () => {
-            stopCSharpHotelMusic();
-        };
     }, []);
 
     const handleTopicSelect = (topicName) => {

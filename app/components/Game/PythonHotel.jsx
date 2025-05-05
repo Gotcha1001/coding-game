@@ -470,20 +470,12 @@ export default function PythonHotel() {
 
     // Add music playback
     useEffect(() => {
-        initAudio();
         loadClickSound("/sounds/click.mp3").then((success) => {
             if (!success) {
                 console.warn("Failed to load click sound");
             }
         });
-        loadPythonHotelMusic("/sounds/pythonmusic.mp3").then(() => {
-            playPythonHotelMusic();
-        });
-        return () => {
-            stopPythonHotelMusic();
-        };
     }, []);
-
     const handleTopicSelect = (topicName) => {
         if (player.pythonMastered[topicName] >= 1) {
             dispatch({

@@ -470,18 +470,11 @@ export default function GamingHotel() {
 
     // Add music playback
     useEffect(() => {
-        initAudio();
         loadClickSound("/sounds/click.mp3").then((success) => {
             if (!success) {
                 console.warn("Failed to load click sound");
             }
         });
-        loadGamingHotelMusic("/sounds/gaming.mp3").then(() => {
-            playGamingHotelMusic();
-        });
-        return () => {
-            stopGamingHotelMusic();
-        };
     }, []);
 
     const handleTopicSelect = (topicName) => {

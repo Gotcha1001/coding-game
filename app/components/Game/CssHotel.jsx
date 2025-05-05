@@ -465,18 +465,11 @@ export default function CssHotel() {
 
     // Initialize and play music on component mount, stop on unmount
     useEffect(() => {
-        initAudio();
         loadClickSound("/sounds/click.mp3").then((success) => {
             if (!success) {
                 console.warn("Failed to load click sound");
             }
         });
-        loadCssHotelMusic("/sounds/css.mp3").then(() => {
-            playCssHotelMusic();
-        });
-        return () => {
-            stopCssHotelMusic();
-        };
     }, []);
 
     const handleTopicSelect = (topicName) => {

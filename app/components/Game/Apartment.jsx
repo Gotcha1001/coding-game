@@ -2467,18 +2467,11 @@ export default function Apartment() {
     }, [player, dispatch]);
 
     useEffect(() => {
-        initAudio();
-        loadHomeMusic('/sounds/apartment.mp3').then(() => {
-            playHomeMusic();
-        });
-        loadClickSound('/sounds/click.mp3').then((success) => {
+        loadClickSound("/sounds/click.mp3").then((success) => {
             if (!success) {
                 console.warn("Failed to load click sound");
             }
         });
-        return () => {
-            stopHomeMusic();
-        };
     }, []);
 
     const showMessage = (message) => {
