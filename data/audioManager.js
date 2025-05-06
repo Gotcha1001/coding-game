@@ -873,7 +873,7 @@
 //   }
 // };
 
-// // ReactNative Music ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// // React Native Music ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // let reactNativeMusic = null;
 // let reactNativeMusicSource = null;
@@ -1543,7 +1543,10 @@
 // };
 
 // export const playClickSound = () => {
-//   if (!audioContext || !clickSound) return;
+//   if (!audioContext || !clickSound) {
+//     console.warn("Cannot play click sound: not loaded or no AudioContext");
+//     return;
+//   }
 //   const soundSource = audioContext.createBufferSource();
 //   soundSource.buffer = clickSound;
 //   soundSource.connect(audioContext.destination);
@@ -1568,47 +1571,12 @@
 // };
 
 // export const playExpressHotelMusic = () => {
-//   if (!audioContext || !expressHotelMusic) return;
+//   if (!audioContext || !expressHotelMusic) {
+//     console.warn("Cannot play Express hotel music: not loaded or no AudioContext");
+//     return;
+//   }
 //   if (expressHotelMusicSource) {
 //     expressHotelMusicSource.stop();
-//   }
-//   const musicSource = audioContext.createBufferSource();
-//   musicSource.buffer = expressHotelMusic;
-//   musicSource.loop = true;
-//   musicSource.connect(audioContext.destination);
-//   musicSource.start();
-//   expressHotelMusicSource = musicSource;
-//   return musicSource;
-// };
-
-// export const stopExpressHotelMusic = () => {
-//   if (expressHotelMusicSource) {
-//     expressHotelMusicSource.stop();
-//     expressHotelMusicSource = null;
-//   }
-// };
-
-// // CssHotel Music
-// export const loadCssHotelMusic = async (url) => {
-//   if (!audioContext) {
-//     if (!initAudio()) return;
-//   }
-//   try {
-//     const response = await fetch(url);
-//     const arrayBuffer = await response.arrayBuffer();
-//     const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
-//     cssHotelMusic = audioBuffer;
-//     return true;
-//   } catch (error) {
-//     console.error("Error loading CssHotel music:", error);
-//     return false;
-//   }
-// };
-
-// export const playCssHotelMusic = () => {
-//   if (!audioContext || !cssHotelMusic) return;
-//   if (cssHotelMusicSource) {
-//     cssHotelMusicSource.stop();
 //   }
 //   const musicSource = audioContext.createBufferSource();
 //   musicSource.buffer = cssHotelMusic;
@@ -2045,6 +2013,19 @@ export const initAudio = () => {
   try {
     if (!audioContext) {
       audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+      // Resume audio context on user interaction
+      const resumeAudioContext = () => {
+        if (audioContext && audioContext.state === "suspended") {
+          audioContext.resume();
+        }
+        document.removeEventListener("click", resumeAudioContext);
+        document.removeEventListener("keydown", resumeAudioContext);
+      };
+
+      document.addEventListener("click", resumeAudioContext);
+      document.addEventListener("keydown", resumeAudioContext);
+
       console.log("AudioContext initialized successfully");
     }
     return true;
@@ -2062,31 +2043,44 @@ const loadAudio = async (url, bufferSetter, name) => {
       return false;
     }
   }
+
   try {
-    console.log(`Fetching audio file: ${url}`);
-    const response = await fetch(url);
+    // Ensure the URL is absolute
+    const absoluteUrl = url.startsWith("/")
+      ? `${window.location.origin}${url}`
+      : url;
+    console.log(`Fetching audio file: ${absoluteUrl}`);
+
+    const response = await fetch(absoluteUrl, {
+      method: "GET",
+      headers: {
+        Accept: "audio/*",
+      },
+      cache: "force-cache",
+    });
+
     if (!response.ok) {
       console.error(
-        `Failed to fetch ${name} at ${url}: HTTP ${response.status}`
+        `Failed to fetch ${name} at ${absoluteUrl}: HTTP ${response.status}`
       );
       return false;
     }
-    const contentType = response.headers.get("content-type");
-    if (!contentType || !contentType.startsWith("audio/")) {
-      console.error(
-        `Invalid content type for ${name} at ${url}: ${contentType}`
-      );
-      return false;
-    }
+
     const arrayBuffer = await response.arrayBuffer();
     if (arrayBuffer.byteLength === 0) {
-      console.error(`Empty audio data for ${name} at ${url}`);
+      console.error(`Empty audio data for ${name} at ${absoluteUrl}`);
       return false;
     }
-    const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
-    bufferSetter(audioBuffer);
-    console.log(`Successfully loaded ${name}`);
-    return true;
+
+    try {
+      const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+      bufferSetter(audioBuffer);
+      console.log(`Successfully loaded ${name}`);
+      return true;
+    } catch (decodeError) {
+      console.error(`Failed to decode audio data for ${name}:`, decodeError);
+      return false;
+    }
   } catch (error) {
     console.error(`Error loading ${name} at ${url}:`, error);
     return false;

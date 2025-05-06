@@ -1,8 +1,3 @@
-
-
-
-
-
 "use client";
 
 import GameContext from "@/app/context/GameContext";
@@ -294,13 +289,11 @@ export default function Map() {
             ref={mapRef}
             className="w-full h-screen pt-10 relative overflow-hidden rounded-lg mt-10"
             style={{
-                backgroundImage:
-                    "url('https://cdn.pixabay.com/photo/2021/09/26/20/49/world-6658881_1280.jpg')",
+                backgroundImage: "url('https://cdn.pixabay.com/photo/2021/09/26/20/49/world-6658881_1280.jpg')",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
                 padding: "10px"
-
-
             }}
         >
             <PathSystem locationPositions={locationPositions} isMobile={isMobile} />
